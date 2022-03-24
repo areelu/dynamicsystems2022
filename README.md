@@ -14,3 +14,10 @@ Workshop of dynamic systems at UNAM
 > Recuerda estudiar para el examen.
 
 **Negritas** *itálicas* <u>subrayado</u>.
+
+```python
+def suma(a, b):
+  return a + b
+
+print(suma(a, b))
+```
