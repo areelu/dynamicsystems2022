@@ -12,3 +12,5 @@ Workshop of dynamic systems at UNAM
 |Arely|Karime|Antón|
 
 > Recuerda estudiar para el examen.
+
+**Negritas** *itálicas* <u>subrayado</u>.
