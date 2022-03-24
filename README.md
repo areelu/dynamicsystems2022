@@ -7,6 +7,6 @@ Workshop of dynamic systems at UNAM
 
 ### Título 3
 
-|Columna 1|Columna 2|
-|:-:|:-:|
-|a|b|
+|Columna 1|Columna 2|Columna 3|
+|:--|:-:|--:|
+|Arely|Karime|Antón|
