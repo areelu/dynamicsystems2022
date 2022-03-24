@@ -10,3 +10,5 @@ Workshop of dynamic systems at UNAM
 |Columna 1|Columna 2|Columna 3|
 |:--|:-:|--:|
 |Arely|Karime|Antón|
+
+> Recuerda estudiar para el examen.
