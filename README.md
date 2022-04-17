@@ -18,14 +18,14 @@ This project was arranged to facilitate future research efforts which require so
 
 ## General Objectives
 
-- Implement the root and shoot growth model which allows the inputting of different initial conditions.
+- Understand the L-Systems.
+-  Implement the root and shoot growth model which allows the inputting of different initial conditions.
 - Create a set of graphical visualizations of the plant model from the imposed initial conditions.
-- Set initial conditions based on real plant data to compare and contrast the obtained results and its real counterpart, in order to measure the performance and attunement of the model for future research projects.
 
 ## Used Tools
 
-- Python 3.
-- Processing 4.
+- [Python 3](https://www.python.org/).
+- [Processing 4](https://processing.org/).
 
 ## References
 
