@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+from mpl_toolkits import mplot3d
 
 
 # w índice de crecimiento
@@ -36,14 +37,20 @@ def root_map(x, y, z, D, G):
     return np.dot(a, b)
 
 
-points = np.empty(shape=(60, 3, 1))
-directions = np.empty(shape=(60, 3, 1))
+points = np.empty(shape=(20, 3, 1))
+directions = np.empty(shape=(20, 3, 1))
 t_x, t_y, t_z = 0.001, 0, 2
 x_dir, y_dir, z_dir = 0, 0, 0
 W, T, D, G = 2, 4/60, 30, 65
 directions[0] = np.array([[x_dir], [y_dir], [z_dir]])
 points[0] = np.array([[t_x], [t_y], [t_z]])
 
+ax, fig = plt.subplots(1)
+ax = plt.axes(projection='3d')
+ax.set_axis_off()
+
+
+# Crear raíz primaria
 for i in range(1, len(points)):
     result = growth_function(t_x, t_y, t_z, x_dir, y_dir, z_dir, W, T, D, G)
     t_x, t_y, t_z = result.pos
@@ -56,8 +63,32 @@ for i in range(1, len(points)):
 x = points[:, 0, 0]
 y = points[:, 1, 0]
 z = points[:, 2, 0]
+ax.plot3D(x, y, z, c='red')
 
-ax, fig = plt.subplots(1)
-fig.plot(y, z)
+# Crear raices secundarias
+for j in range(1, len(points)):
+    points_2 = np.empty(shape=(len(points)-j, 3, 1))
+    directions_2 = np.empty(shape=(len(points)-j, 3, 1))
+    t_x, t_y, t_z = points[j]
+    x_dir, y_dir, z_dir = directions[j]
+    t_x, t_y, t_z = t_x[0], t_y[0], t_z[0]
+    x_dir, y_dir, z_dir = x_dir[0], y_dir[0], z_dir[0]
+    directions_2[0] = np.array([[x_dir], [y_dir], [z_dir]])
+    points_2[0] = np.array([[t_x], [t_y], [t_z]])
+    for i in range(1, len(points_2)):
+        result = growth_function(t_x, t_y, t_z, x_dir, y_dir, z_dir, W, T, D, G)
+        t_x, t_y, t_z = result.pos
+        t_x, t_y, t_z = t_x[0], t_y[0], t_z[0]
+        x_dir, y_dir, z_dir = result.dir
+        x_dir, y_dir, z_dir = x_dir[0], y_dir[0], z_dir[0]
+        points_2[i] = np.array([[t_x], [t_y], [t_z]])
+        directions_2[i] = np.array([[x_dir], [y_dir], [z_dir]])
+
+    x = points_2[:, 0, 0]
+    y = points_2[:, 1, 0]
+    z = points_2[:, 2, 0]
+    ax.plot3D(x, y, z, c='grey')
+
+
 fig.invert_yaxis()
 plt.show()
